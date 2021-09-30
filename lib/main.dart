@@ -18,7 +18,7 @@ class TutorialHome extends StatelessWidget {
               children:[
                 Image.asset('images/climate.png'),
                 Padding(
-                    child:Text('深圳 · 26°',style:TextStyle(fontSize: 14.6)),
+                    child:Text('深圳 · 26°C',style:TextStyle(fontSize: 14.6)),
                     padding:EdgeInsets.only(left:2.2)
                 )
           ]),
@@ -27,24 +27,25 @@ class TutorialHome extends StatelessWidget {
           backgroundColor:Color.fromRGBO(0,136,255,1)
       ),
       //body占屏幕的大部分
-      body:SafeArea(
-          child:Column(
-            children:[
-              Container(
-                  decoration: BoxDecoration(
-                    color:Color.fromRGBO(0,136,255,1),
-                    borderRadius:BorderRadius.only(bottomLeft: Radius.circular(16),bottomRight:  Radius.circular(16))
-                  ),
-                  child:Column(
-                    children: [
-                      new AdCard(),
-                      new MenusLink()
-                    ],
-                  )
-              ),
-              new StatisticsArea()
-            ],
-          ),
+      body:SingleChildScrollView(
+            child:Column(
+              children:[
+                Container(
+                    decoration: BoxDecoration(
+                        color:Color.fromRGBO(0,136,255,1),
+                        borderRadius:BorderRadius.only(bottomLeft: Radius.circular(16),bottomRight:  Radius.circular(16))
+                    ),
+                    child:Column(
+                      children: [
+                         AdCard(),
+                         MenusLink()
+                      ],
+                    )
+                ),
+                StatisticsArea(),
+                LatestMarket()
+              ],
+            ),
       ),
     );
   }
@@ -145,9 +146,8 @@ class MiniCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                //Image.asset('images/icon_home_allhouse.png'),
                 this.image,
-                Text(this.text)
+                Padding(child: Text(this.text),padding:EdgeInsets.only(top:10))
               ]
           )
         )
@@ -159,10 +159,176 @@ class StatisticsArea extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return new GestureDetector(
-      child:Align(
-        alignment: Alignment.topLeft,
-        child: Text('关键数据'),
+      child:Container(
+        color:Colors.white,
+        margin: EdgeInsets.only(top:17.9),
+        child:Column(
+        children:[
+          Container(
+            alignment: Alignment.topLeft,
+            margin:EdgeInsets.only(left:17.9,bottom:17.9),
+            child: Text(
+                '关键数据',
+                style:TextStyle(
+                    fontSize: 22.4,
+                    fontFamily: "PingFangSC",
+                    fontWeight: FontWeight.bold,
+                    height:2.2,
+                )
+            ),
+          ),
+          Wrap(
+            children: [
+              DataCard(topText:"99+", bottomText:'人气排名', width:140.0,height: 114.2),
+              Card(
+                child:Container(
+                  width: 235.2,
+                  height: 114.2,
+                  decoration: BoxDecoration(
+                    border:Border.all(
+                        color:Color.fromRGBO(19,19,25,0.08),
+                        width:1,
+                        style:BorderStyle.solid
+                    )
+                  ),
+                  child:Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[
+                      Text('名片访客/人'),
+                      Text('名片访问/次')
+                    ],
+                  )
+                )
+              ),
+              Card(
+                  child:Container(
+                      width: 384.2,
+                      height: 114.2,
+                      decoration: BoxDecoration(
+                          border:Border.all(
+                              color:Color.fromRGBO(19,19,25,0.08),
+                              width:1,
+                              style:BorderStyle.solid
+                          )
+                      ),
+                      child:Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children:[
+                          Text('名片访客/人'),
+                          Text('名片访问/次')
+                        ],
+                      )
+                  )
+              ),
+              Card(
+                  child:Container(
+                      width: 235.2,
+                      height: 114.2,
+                      decoration: BoxDecoration(
+                          border:Border.all(
+                              color:Color.fromRGBO(19,19,25,0.08),
+                              width:1,
+                              style:BorderStyle.solid
+                          )
+                      ),
+                      child:Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children:[
+                          Text('名片访客/人'),
+                          Text('名片访问/次')
+                        ],
+                      )
+                  )
+              ),
+              DataCard(topText:"8", bottomText:'成交/套', width:140.0,height: 114.2),
+            ],
+          )
+        ],
       )
+      ),
+
+    );
+  }
+}
+
+class DataCard extends StatelessWidget{
+  late String topText;
+  late String bottomText;
+  late double width;
+  late double height;
+  DataCard({topText,bottomText,width,height}){
+    this.topText = topText;
+    this.bottomText = bottomText;
+    this.width = width;
+    this.height = height;
+  }
+  @override
+  Widget build(BuildContext context){
+    return Card(
+        child:InkWell(
+          splashColor: Colors.blue.withAlpha(30),
+          onTap:(){
+            print('Card tapped');
+          },
+          child:Container(
+            width: this.width,//140,
+            height: this.height,//114.2,
+            decoration: BoxDecoration(
+                border:Border.all(
+                  color:Color.fromRGBO(19,19,25,0.08),
+                  width:1,
+                  style:BorderStyle.solid
+                )
+            ),
+            child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:[
+                Text(this.topText),
+                Text(this.bottomText)
+              ],
+            )
+          )
+        )
+      );
+  }
+}
+
+class LatestMarket extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Container(
+      color:Colors.white,
+      child: Column(
+        children: [
+          Container(
+            height: 49.3,
+            margin:EdgeInsets.only(left:17.9),
+            child:Row(
+              children: [
+                Text('最新行情',
+                  style:TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22.4,
+                      height: 2,
+                      fontFamily: 'PingFangSC'
+                  ),
+                ) ,
+                Text('  |  每日最新咨询，快速分享',
+                    style:TextStyle(
+                        color:Color.fromRGBO(121,128,138,1),
+                        fontWeight: FontWeight.w400,
+                        height: 2.6
+                    )
+                )
+              ],
+            ),
+          ),
+          Image(
+            image:NetworkImage('https://bkimg.cdn.bcebos.com/pic/3b87e950352ac65c10381e7101baa5119313b07e1cd2?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UyMjA=,g_7,xp_5,yp_5/format,f_auto'),
+            width:262.1,
+          )
+        ],
+      ),
     );
   }
 }
