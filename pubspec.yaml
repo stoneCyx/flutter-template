@@ -49,6 +49,17 @@ flutter:
   assets:
      - images/icon_home_dailyword.png
      - images/climate.png
+     - images/icon_home_aicard.png
+     - images/icon_home_aicard.png
+     - images/icon_home_allhouse.png
+     - images/icon_home_bill.png
+     - images/icon_home_customer.png
+     - images/icon_home_delivercard.png
+     - images/icon_home_jike.png
+     - images/icon_home_myhouse.png
+     - images/icon_home_pushcloud.png
+     - images/icon_home_report.png
+     - images/icon_home_transaction.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

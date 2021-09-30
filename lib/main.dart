@@ -29,7 +29,21 @@ class TutorialHome extends StatelessWidget {
       //body占屏幕的大部分
       body:SafeArea(
           child:Column(
-            children:[new AdCard(),new MenusLink(),new StatisticsArea()],
+            children:[
+              Container(
+                  decoration: BoxDecoration(
+                    color:Color.fromRGBO(0,136,255,1),
+                    borderRadius:BorderRadius.only(bottomLeft: Radius.circular(16),bottomRight:  Radius.circular(16))
+                  ),
+                  child:Column(
+                    children: [
+                      new AdCard(),
+                      new MenusLink()
+                    ],
+                  )
+              ),
+              new StatisticsArea()
+            ],
           ),
       ),
     );
@@ -84,11 +98,59 @@ class MenusLink extends StatelessWidget {
         height: 202,
         width: double.infinity,
         decoration: BoxDecoration(
-          border:new Border.all(color:Color(0xffff0000),width:0.5),
+          color:Colors.white,
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0,1),
+              color:Colors.grey,
+              blurRadius: 1.0,
+            )
+          ],
           borderRadius:BorderRadius.all(Radius.circular(16))
         ),
-        child:Text('xxx'),
+        alignment: Alignment.center,
+        child:Wrap(
+          children: [
+            MiniCard(text:'房源库', image:Image.asset('images/icon_home_allhouse.png')),
+            MiniCard(text:'房源本', image:Image.asset('images/icon_home_myhouse.png')),
+            MiniCard(text:'楼盘报备', image:Image.asset('images/icon_home_report.png')),
+            MiniCard(text:'海报', image:Image.asset('images/icon_home_bill.png')),
+            MiniCard(text:'我的名片', image:Image.asset('images/icon_home_aicard.png')),
+            MiniCard(text:'我的客户', image:Image.asset('images/icon_home_customer.png')),
+            MiniCard(text:'我的成交', image:Image.asset('images/icon_home_transaction.png')),
+            MiniCard(text:'我的展位', image:Image.asset('images/icon_home_jike.png')),
+            MiniCard(text:'我的线索', image:Image.asset('images/icon_home_pushcloud.png')),
+            MiniCard(text:'递名片', image:Image.asset('images/icon_home_delivercard.png'))
+          ],
+        )
       )
+    );
+  }
+}
+
+class MiniCard extends StatelessWidget {
+  late String text;
+  late Image image;
+  MiniCard({text,image}){
+    this.text = text;
+    this.image = image;
+  }
+  @override
+  Widget build(BuildContext context){
+    return new GestureDetector(
+        child:Container(
+          width:79.5,
+          height:89.6,
+          child:Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //Image.asset('images/icon_home_allhouse.png'),
+                this.image,
+                Text(this.text)
+              ]
+          )
+        )
     );
   }
 }
