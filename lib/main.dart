@@ -43,7 +43,8 @@ class TutorialHome extends StatelessWidget {
                     )
                 ),
                 StatisticsArea(),
-                LatestMarket()
+                LatestMarket(),
+                FastNews()
               ],
             ),
       ),
@@ -89,7 +90,6 @@ class AdCard extends StatelessWidget{
     );
   }
 }
-
 
 class MenusLink extends StatelessWidget {
   @override
@@ -313,7 +313,7 @@ class LatestMarket extends StatelessWidget{
                       fontFamily: 'PingFangSC'
                   ),
                 ) ,
-                Text('  |  每日最新咨询，快速分享',
+                Text('  |  一分钟了解楼市行情',
                     style:TextStyle(
                         color:Color.fromRGBO(121,128,138,1),
                         fontWeight: FontWeight.w400,
@@ -329,6 +329,86 @@ class LatestMarket extends StatelessWidget{
           )
         ],
       ),
+    );
+  }
+}
+
+class FastNews extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Container(
+      color:Colors.white,
+      child: Column(
+        // margin:EdgeInsets.all(17.9),
+        children: [
+          Row(
+          children: [
+            Image.asset('images/title_home_news.png'),
+            Text(' |  每日最新咨询，快速分享')
+          ],
+        ),
+          Card(
+            child:  Container(
+              width:384.2,
+              height: 221.7,
+              child: Column(
+                children: [
+                  Container(
+                      alignment: Alignment.topLeft,
+                      child:
+                      Text('03.08 · 周一',
+                        style:TextStyle(color:Color.fromRGBO(0,136,255,1),fontWeight: FontWeight.bold),
+                      )
+                  ),
+                  Row(
+                    children: [
+                      Image.asset('images/home_important.png'),
+                      Container(
+                        width: 234.1,
+                        margin:EdgeInsets.only(left:29.6,top:7.8,bottom:7.8),
+                        child: Text(
+                          '公寓绝版、无房优、邵登峰邵登峰2020年深圳地产九大关键词火热出炉',
+                          style:TextStyle(color:Color(0xFF40454C),fontSize: 15.7,fontWeight: FontWeight.w500),
+                          maxLines:2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        width:6.7,
+                        height: 6.7,
+                        margin:EdgeInsets.only(right:13.4),
+                        color:Color.fromRGBO(0,136,255,1),
+                      ),
+                      Text('2021年房地产市场怎么走？',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(height: 1.46,fontSize:15.7),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        width:6.7,
+                        height: 6.7,
+                        margin:EdgeInsets.only(right:13.4),
+                        color:Color.fromRGBO(0,136,255,1),
+                      ),
+                      Text('日光盘比例近30%，2020年深圳入市住宅盘点？',
+                          textAlign: TextAlign.left,
+                          style:TextStyle(height:1.46,fontSize:15.7)
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ) ,
+          ),
+        ],
+      )
     );
   }
 }
