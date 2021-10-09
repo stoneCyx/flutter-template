@@ -341,71 +341,88 @@ class FastNews extends StatelessWidget{
       child: Column(
         // margin:EdgeInsets.all(17.9),
         children: [
-          Row(
-          children: [
-            Image.asset('images/title_home_news.png'),
-            Text(' |  每日最新咨询，快速分享')
-          ],
-        ),
+          Container(
+            child:Row(
+              children: [
+                Image.asset('images/title_home_news.png'),
+                Text(' |  每日最新咨询，快速分享')
+              ],
+            ),
+            height: 49.3,
+            margin:EdgeInsets.only(top:9,left:17.9)
+          ),
           Card(
-            child:  Container(
-              width:384.2,
-              height: 221.7,
-              child: Column(
-                children: [
-                  Container(
-                      alignment: Alignment.topLeft,
-                      child:
-                      Text('03.08 · 周一',
-                        style:TextStyle(color:Color.fromRGBO(0,136,255,1),fontWeight: FontWeight.bold),
-                      )
-                  ),
-                  Row(
+              color:Colors.white,
+              elevation: 20.0,
+              clipBehavior: Clip.antiAlias,
+              semanticContainer: false,
+              shape:RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(6.0)),
+              ),
+              child:Container(
+                  width:384.2,
+                  padding: EdgeInsets.only(left:17.9,top:20.2,bottom:31.0),
+                  child:Column(
                     children: [
-                      Image.asset('images/home_important.png'),
                       Container(
-                        width: 234.1,
-                        margin:EdgeInsets.only(left:29.6,top:7.8,bottom:7.8),
-                        child: Text(
-                          '公寓绝版、无房优、邵登峰邵登峰2020年深圳地产九大关键词火热出炉',
-                          style:TextStyle(color:Color(0xFF40454C),fontSize: 15.7,fontWeight: FontWeight.w500),
-                          maxLines:2,
-                          overflow: TextOverflow.ellipsis,
+                          alignment: Alignment.topLeft,
+                          child:
+                          Text('03.08 · 周一',
+                            style:TextStyle(color:Color.fromRGBO(0,136,255,1),fontWeight: FontWeight.bold),
+                          )
+                      ),
+                      Row(
+                        children: [
+                          Image.asset('images/home_important.png'),
+                          Container(
+                            width: 234.1,
+                            margin:EdgeInsets.only(left:29.6,top:7.8,bottom:7.8),
+                            child: Text(
+                              '公寓绝版、无房优、邵登峰邵登峰2020年深圳地产九大关键词火热出炉',
+                              style:TextStyle(color:Color(0xFF40454C),fontSize: 15.7,fontWeight: FontWeight.w500),
+                              maxLines:2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin:EdgeInsets.only(top:26.9),
+                        child:Row(
+                          children: [
+                            Container(
+                              width:6.7,
+                              height: 6.7,
+                              margin:EdgeInsets.only(right:13.4),
+                              color:Color.fromRGBO(0,136,255,1),
+                            ),
+                            Text('2021年房地产市场怎么走？',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(height: 1.46,fontSize:15.7),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin:EdgeInsets.only(top:26.9),
+                        child: Row(
+                          children: [
+                            Container(
+                              width:6.7,
+                              height: 6.7,
+                              margin:EdgeInsets.only(right:13.4),
+                              color:Color.fromRGBO(0,136,255,1),
+                            ),
+                            Text('日光盘比例近30%，2020年深圳入市住宅盘点？',
+                                textAlign: TextAlign.left,
+                                style:TextStyle(height:1.46,fontSize:15.7)
+                            ),
+                          ],
                         ),
                       ),
                     ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        width:6.7,
-                        height: 6.7,
-                        margin:EdgeInsets.only(right:13.4),
-                        color:Color.fromRGBO(0,136,255,1),
-                      ),
-                      Text('2021年房地产市场怎么走？',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(height: 1.46,fontSize:15.7),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        width:6.7,
-                        height: 6.7,
-                        margin:EdgeInsets.only(right:13.4),
-                        color:Color.fromRGBO(0,136,255,1),
-                      ),
-                      Text('日光盘比例近30%，2020年深圳入市住宅盘点？',
-                          textAlign: TextAlign.left,
-                          style:TextStyle(height:1.46,fontSize:15.7)
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ) ,
+                  )
+              ) ,
           ),
         ],
       )
